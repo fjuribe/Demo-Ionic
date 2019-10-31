@@ -23,6 +23,12 @@ export class InicioPage implements OnInit {
      name:'avatar',
      redirecTo:'/avatar'
    }
+   ,
+   {
+     icon:'radio-button-on',
+     name:'Botones y router',
+     redirecTo:'/botones'
+   }
 
   ];
 
