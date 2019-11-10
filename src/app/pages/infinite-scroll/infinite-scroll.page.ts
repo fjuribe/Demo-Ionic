@@ -9,7 +9,7 @@ import {IonInfiniteScroll} from '@ionic/angular';
 })
 export class InfiniteScrollPage implements OnInit {
 	
-	@ViewChild(IonInfiniteScroll) infiniteScroll:IonInfiniteScroll;
+ @ViewChild(IonInfiniteScroll) infitniteScroll: IonInfiniteScroll;
 	data:any[]=Array(20);
 
 	constructor() { }
@@ -22,7 +22,7 @@ loadData(event){
 
    if (this.data.length>50) {
    	 event.target.complete();
-   	 this.infiniteScroll.disabled=true;
+   	 this.infitniteScroll.disabled=true;
    	 return;
    }
 
