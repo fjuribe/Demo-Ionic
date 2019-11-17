@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import {Componente} from '../../components/interfaces/interfaces';
+import {DataService} from 'src/app/services/data.service';
+import {Observable} from 'rxjs';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.page.html',
@@ -7,96 +11,12 @@ import { MenuController } from '@ionic/angular';
 })
 export class InicioPage implements OnInit {
 
-  componentes:Componente[]=[
-   {
-   	icon:'american-football',
-   	name:'Action sheet',
-   	redirecTo:'/action-sheet'
-   },
-    {
-   	icon:'appstore',
-   	name:'Alert',
-   	redirecTo:'/alert'
-   },
-   {
-     icon:'beaker',
-     name:'avatar',
-     redirecTo:'/avatar'
-   }
-   ,
-   {
-     icon:'radio-button-on',
-     name:'Botones y router',
-     redirecTo:'/botones'
-   }
-    ,
-   {
-     icon:'card',
-     name:'Cards',
-     redirecTo:'/card'
-   },
-   {
-     icon:'checkmark-circle-outline',
-     name:'Checkbox',
-     redirecTo:'/check'
-   }
-   ,
-   {
-     icon:'calendar',
-     name:'DateTime',
-     redirecTo:'/date-time'
-   }
-   ,
-   {
-     icon:'car',
-     name:'Fabs',
-     redirecTo:'/fab'
-   }
+  componentes:Observable<Componente[]>;
 
-    ,
-   {
-     icon:'grid',
-     name:'Grids',
-     redirecTo:'/grid'
-   }
-
-     ,
-   {
-     icon:'infinite',
-     name:'Infinite',
-     redirecTo:'/infinite-scroll'
-   }
-
-      ,
-   {
-     icon:'hammer',
-     name:'input - Form',
-     redirecTo:'/input'
-   }
-       ,
-   {
-     icon:'list',
-     name:'Listas - sliding',
-     redirecTo:'/list'
-   }
-
- ,
-   {
-     icon:'reorder',
-     name:'Listas - reorder',
-     redirecTo:'/list-reorder'
-   }
-   ,
-   {
-     icon:'refresh-circle',
-     name:'Loading',
-     redirecTo:'/loading'
-   }
-  ];
-
-  constructor(private menu: MenuController) { }
+  constructor(private menu: MenuController,private dataService:DataService ) { }
 
   ngOnInit() {
+    this.componentes=this.dataService.getMenu();
   }
 
   toggleMenu(){
@@ -106,8 +26,3 @@ export class InicioPage implements OnInit {
 }
 
 
-interface Componente{
-	icon:string;
-	name:string;
-	redirecTo:string;
-}
